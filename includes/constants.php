@@ -10,3 +10,7 @@ define('STATUS_POSSIBLE_TEXT_SPAM', 4);
 define('PRIORITY_DEFAULT', 1);
 define('PRIORITY_SAME_DAY', 2);
 define('PRIORITY_MORNING_REPLY', 3);
+
+//recaptcha
+define('RC_SITE_KEY', '6LfQTrEcAAAAAFv_OpzVUq3QJsrGJXhJyJRFfGL_');
+define('RC_SECRET_KEY', '6LfQTrEcAAAAAFyz-PIolJscQXa3ogFd2-6_aXM5');
