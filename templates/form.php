@@ -20,6 +20,7 @@
     </div>
     <div id="form-right">
         <!-- recaptcha -->
+        <div class="g-recaptcha" data-sitekey="<?= RC_SITE_KEY ?>"></div>
         <input type="submit" name="submit" value="Send" />
     </div>
 </form>

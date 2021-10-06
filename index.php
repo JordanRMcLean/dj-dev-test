@@ -9,6 +9,7 @@ require 'includes/constants.php';
 require 'includes/form.php';
 
 $submitted = empty($_POST['submit']) ? false : true;
+$invalid_fields = [];
 $form_error_msg = '';
 $template = 'templates/form.php'; //the template to display.
 
@@ -18,24 +19,26 @@ if($submitted) {
 
     //first lets get our values.
     foreach($contact_form as $key => $input) {
+        $value = $_POST[$key];
+
         //setting the values so they are displayed within the form still on failure.
-        $contact_form[$key]['value'] = $_POST[$key];
-    }
+        $contact_form[$key]['value'] = $value;
 
-    //we will validate in a moment, check the recaptcha
-
-
-    $invalid_fields = [];
-
-    //validate all the form pieces.
-    foreach($contact_form as $key => $input) {
-        if(!$input['validate']($input['value'])) {
+        if(!$input['validate']($value)) {
             $invalid_fields[] = $input['label'];
         }
     }
 
+    //and validate ReCaptcha
+    $token = $_POST['g-recaptcha-response'];
+
+    if(!recaptcha_validate($token)) {
+        $invalid_fields[] = 'ReCaptcha';
+        $form_error_msg = 'Invalid ReCaptcha Submission. ';
+    }
+
     //set an error message. This will display above the form.
-    $form_error_msg = 'Please revise the following parts: ' . implode(', ', $invalid_fields);
+    $form_error_msg .= 'Please revise the following parts: ' . implode(', ', $invalid_fields);
 
     //all fields were valid so we can insert into DB.
     if(empty($invalid_fields)) {
@@ -105,7 +108,6 @@ if($submitted) {
         $template = 'templates/success.php';
 
     }
-
 }
 
 ?>
@@ -114,6 +116,7 @@ if($submitted) {
 <head>
     <script type="text/javascript" src="test.js"></script>
     <link rel="stylesheet" href="test.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 

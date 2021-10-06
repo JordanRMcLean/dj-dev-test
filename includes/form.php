@@ -50,3 +50,33 @@ $contact_form = [
     ],
 
 ];
+
+
+function recaptcha_validate($token) {
+    if(empty($token)) {
+        return false;
+    }
+
+    try {
+
+        //use cURL for POST request as is fairly standard.
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, "response=$token&secret=" . RC_SECRET_KEY);
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        $json = json_decode($response);
+
+        return $json->success;
+    }
+    catch(Exception $e) {
+        throw new Exception('ReCaptcha Request failed.' . ' ' . $e->getMessage());
+        return false;
+    }
+
+    return false;
+}
