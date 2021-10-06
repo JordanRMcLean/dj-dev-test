@@ -8,11 +8,13 @@ function validate_form(e, field) {
 
     if(field === 'name' || field === 'all') {
         let error_span = document.getElementById('error-name');
-        if(name.value.length < 1 || name.value.length > 30) {
-            error_span.innerHTML = 'Name must be between 1 & 30 characters';
+        if(name.value.length < 2 || name.value.length > 30) {
+            error_span.innerHTML = 'Name must be between 2 & 30 characters';
+            errors = true;
         }
         else if(!/^[A-Za-z\s]+$/.test(name.value)) {
             error_span.innerHTML = 'Name must only contain letters and spaces';
+            errors = true;
         }
         else {
             error_span.innerHTML = '';
@@ -23,6 +25,7 @@ function validate_form(e, field) {
         let error_span = document.getElementById('error-email');
         if(!email.value.indexOf('@')) {
             error_span.innerHTML = 'Please enter a valid email address.';
+            errors = true;
         }
         else {
             error_span.innerHTML = '';
@@ -33,9 +36,11 @@ function validate_form(e, field) {
         let error_span = document.getElementById('error-telephone');
         if(telephone.value.length < 8) {
             error_span.innerHTML = 'Telephone numbers must be more than 8 characters.';
+            errors = true;
         }
         else if(!/^\+?[0-9\s]+$/.test(telephone.value)) {
             error_span.innerHTML = 'Telephone numbers must only contain numbers, spaces or +';
+            errors = true;
         }
         else {
             error_span.innerHTML = '';
@@ -46,6 +51,7 @@ function validate_form(e, field) {
         let error_span = document.getElementById('error-message');
         if(message.value.length < 5 || message.value.length > 300) {
             error_span.innerHTML = 'Message length must be between 5 & 300 characters';
+            errors = true;
         }
         else {
             error_span.innerHTML = '';

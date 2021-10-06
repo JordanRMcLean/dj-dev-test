@@ -1,0 +1,77 @@
+#form-left, #form-right {
+    float: left;
+    width: 59%;
+}
+#form-right {
+    width: 30%;
+}
+
+#contact-form {
+    margin-top: 25px;
+}
+
+span.form-element {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #c9c9c9;
+    width: 90%;
+}
+
+.form-element label {
+    margin-right: 10px;
+    background: grey;
+    border: 1px solid black;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.form-element input {
+    width: 40%;
+    padding: 8px;
+}
+
+div#form-error {
+    padding: 10px;
+    clear: both;
+    background: #ffe4e4;
+    border: 1px solid red;
+    border-radius: 3px;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-element .error {
+    color: red;
+}
+
+.row {
+    margin: 10px;
+    border: 1px solid #CCC;
+    padding: 10px;
+}
+
+.row-left {
+    float: left;
+    width: 20%;
+    border-right: 1px solid black;
+}
+
+.row-right {
+    float: left;
+    width: 79%;
+    margin-left: 10px;
+}
+
+.row-left span, .row-right span {
+    display: block;
+}
+
+.row-right div {
+    background: #EEE;
+    padding: 5px;
+    margin: 5px 0;
+    border: 2px solid orange;
+}

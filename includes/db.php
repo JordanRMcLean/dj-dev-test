@@ -13,10 +13,10 @@ class Model {
 	/* --------------------
 	*  DATABASE CREDENTIALS
 	*  --------------------    */
-	private $db_host = 'jordmclean97375.ipagemysql.com';
+	private $db_host = '';
 	private $db_name = 'db_design_junkie';
-	private $db_username = 'design_junkie';
-	private $db_password = 'Designjunki33!';
+	private $db_username = '';
+	private $db_password = '';
 
 	/*
 	* If debug is on then Exceptions thrown will include all query options and info.

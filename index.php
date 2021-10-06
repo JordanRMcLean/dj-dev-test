@@ -123,7 +123,9 @@ if($submitted) {
     <h2>Contact Form</h2>
 
     <?php include($template); ?>
-
-
+    
+<div style="clear:both"></div>
+<br><br>
+<a href="/view.php">Link to view submissions</a>
 </body>
 </html>
