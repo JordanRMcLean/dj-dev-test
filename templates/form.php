@@ -6,22 +6,22 @@
             echo "<span class=\"form-element\"><label for=\"$key\">{$elem['label']}</label>";
             if($elem['type'] === 'textbox') {
                 echo <<<FORM
-                <textarea placeholder="{$elem['placeholder']}" length="50" name="$key" id="{$elem['id']}">{$elem['value']}</textarea>
+                <textarea onblur="validate_form(event, '$key')" maxlength="300" placeholder="{$elem['placeholder']}" length="50" name="$key" id="input-$key">{$elem['value']}</textarea>
                 FORM;
             }
             else {
                 echo <<<FORM
-                <input type="{$elem['type']}" name="$key" length="50" placeholder="{$elem['placeholder']}" id="{$elem['id']}" value="{$elem['value']}" />
+                <input onblur="validate_form(event, '$key')" type="{$elem['type']}" name="$key" length="50" placeholder="{$elem['placeholder']}" id="input-$key" value="{$elem['value']}" />
                 FORM;
             }
-            echo '</span>';
+            echo '<span class="error" id="error-'. $key . '"></span></span>';
         }
         ?>
     </div>
     <div id="form-right">
         <!-- recaptcha -->
         <div class="g-recaptcha" data-sitekey="<?= RC_SITE_KEY ?>"></div>
-        <input type="submit" name="submit" value="Send" />
+        <input type="submit" name="submit" value="Send" onclick="validate_form(event, 'all')" />
     </div>
 </form>
 

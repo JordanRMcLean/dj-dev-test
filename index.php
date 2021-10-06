@@ -8,13 +8,13 @@ require 'includes/db.php';
 require 'includes/constants.php';
 require 'includes/form.php';
 
+//check if form has been submitted
 $submitted = empty($_POST['submit']) ? false : true;
 $invalid_fields = [];
 $form_error_msg = '';
 $template = 'templates/form.php'; //the template to display.
 
-
-//check if form has been submitted
+//we're gonna validate the form.
 if($submitted) {
 
     //first lets get our values.
@@ -106,7 +106,6 @@ if($submitted) {
         ]);
 
         $template = 'templates/success.php';
-
     }
 }
 

@@ -45,12 +45,11 @@ $contact_form = [
         'value'         => '',
         'validate'      => function($value) {
             //max characters of 300 for our db.
-            return strlen($value) < 301 && strlen($value) > 1 ? true : false;
+            return strlen($value) < 301 && strlen($value) > 5 ? true : false;
          }
     ],
 
 ];
-
 
 function recaptcha_validate($token) {
     if(empty($token)) {
